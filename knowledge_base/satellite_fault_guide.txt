@@ -1,0 +1,9 @@
+Magnetometer Anomaly: A sudden drop to near-zero values in magnetometer channel often indicates sensor disconnection or power cycling. Recommended action: Switch to redundant magnetometer, verify power bus voltage, and if the signal remains absent, flag for ground-based recalibration.
+
+Reaction Wheel Overcurrent: If reaction wheel current exceeds nominal threshold for more than 10 seconds, this may indicate mechanical friction or bearing wear. Recommended action: Reduce wheel speed, perform friction compensation, and cross-check with temperature readings. If current remains high, isolate the wheel and switch to backup wheel.
+
+Telemetry Dropout: A prolonged flatline across multiple channels suggests a communication link failure between the on-board computer and the ground station. Recommended action: Attempt reconnection on secondary frequency, run built-in self-test, and if the condition persists, switch to low-gain antenna.
+
+Voltage Spike: A transient spike in bus voltage beyond 5% of nominal value can damage sensitive electronics. Recommended action: Engage voltage regulator limiting, check solar array and power distribution unit, and log event for trend analysis.
+
+Temperature Exceeding Limits: If any subsystem temperature reading goes outside safe operating range for more than 2 minutes, this could be caused by thermal blanket degradation or heater failure. Recommended action: Activate redundant heater, adjust satellite attitude to reduce sun exposure, and monitor trend.

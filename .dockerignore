@@ -1,0 +1,10 @@
+segments.csv
+ts_cleaned.csv
+chroma_db/
+knowledge_base/
+*.pkl
+*.h5
+*.keras
+.ipynb_checkpoints/
+__pycache__/
+.git/

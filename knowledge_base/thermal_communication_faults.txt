@@ -1,0 +1,5 @@
+Thermal and Communication Faults:
+- Heater Failure: Temperature falls below survival limit while heater current is zero. Probable cause: broken heater element or thermostat. Mitigation: switch to redundant heater, adjust spacecraft attitude for sun exposure.
+- Over-Temperature Alarm: Temperature above 60°C for >5 minutes. Possible stuck thermostat, internal short, or thermal blanket issue. Action: reduce power, open louvers, orient to minimize solar heating.
+- Communication Link Dropout: No telemetry for >30 seconds. Causes: antenna misalignment, low SNR, transmitter failure. Recovery: reconnect on secondary frequency, switch to low-gain antenna, check bit error rate.
+- On-Board Computer Watchdog Reset: Unexpected reboot, likely software fault or radiation single event upset. After reboot, reload last valid config. If >3 resets per hour, activate backup computer, scrub primary memory.

@@ -1,0 +1,5 @@
+Power Subsystem Faults:
+- Solar Array Degradation: Gradual drop in bus voltage over multiple orbits. Check for physical damage, increased resistance in wiring, or partial shadowing. Mitigation: switch to backup array, adjust attitude for better sunlight, and monitor battery charge cycles.
+- Battery Overcharge: Voltage rises above maximum safe limit (typically 4.2V per cell for Li-ion). Caused by failed charge regulator. Action: isolate battery, enable trickle charge, cross-check temperature sensors.
+- Bus Under-Voltage: Main power bus drops below 5V for more than 2 seconds. Usually a short circuit or failed power distribution unit. Recovery: disconnect non-essential loads, reset distribution unit; if persists, ground intervention.
+- Power Cycling Anomaly: Sudden repeated ON/OFF in a channel. Often cold solder joint or radiation-induced latch-up. Procedure: power-cycle the unit three times; if fault remains, switch to redundant hardware.

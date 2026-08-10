@@ -1,0 +1,7 @@
+{
+  "sample_size": 30,
+  "relevant_retrievals": 30,
+  "relevance_rate": 1.0,
+  "method": "Automated keyword-based relevance check on retrieved chunks.",
+  "limitations": "Preliminary baseline. Future work includes human evaluation and answer correctness metrics."
+}

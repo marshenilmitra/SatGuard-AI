@@ -1,0 +1,5 @@
+Attitude Control Subsystem Faults:
+- Reaction Wheel Saturation: Wheel RPM reaches maximum, torque authority lost. Desaturation via magnetorquers or thrusters required. If persistent, check disturbance torques or magnetorquer failure.
+- Star Tracker Blindness: Fewer than 3 stars tracked for >10 seconds. Causes: Sun/Moon in FOV, stray light. Action: switch to backup tracker, use gyro propagation.
+- Magnetorquer Anomaly: Current saturation or flatline at zero. Check for magnetic interference, command dropout, broken coil. If inoperable, maintain attitude with wheels and thrusters only; desaturation capability lost.
+- Gyroscope Drift: Rapid divergence from star tracker solution, indicating bias. Action: on-orbit calibration using star tracker; if drift exceeds 0.1 deg/hour, flag as degraded.
