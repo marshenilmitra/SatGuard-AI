@@ -134,7 +134,7 @@ SatGuard-AI/
 ├── images/                        # Architecture diagrams
 ├── docs/                          # PPT + final report
 └── demo/                          # Demo GIF + short video
-```text
+```
 ---
 
 ## 🚀 Setup & Installation
