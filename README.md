@@ -140,15 +140,18 @@ SatGuard-AI/
 ## 🚀 Setup & Installation
 1. Clone the repository
 bash
+
 git clone https://github.com/marshenilmitra/SatGuard-AI.git
 cd SatGuard-AI
-2. Create Python 3.11 virtual environment and install dependencies
+3. Create Python 3.11 virtual environment and install dependencies
 bash
+
 python -m venv venv
 source venv/bin/activate    # Linux/Mac
 venv\Scripts\activate       # Windows
 pip install -r requirements.txt
-3. Install Ollama and pull Llama 3
+
+4. Install Ollama and pull Llama 3
 Download Ollama from ollama.com
 
 Pull the model:
