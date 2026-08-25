@@ -134,6 +134,7 @@ SatGuard-AI/
 ├── images/                        # Architecture diagrams
 ├── docs/                          # PPT + final report
 └── demo/                          # Demo GIF + short video
+---
 ## 🚀 Setup & Installation
 1. Clone the repository
 bash
