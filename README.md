@@ -1,4 +1,4 @@
-markdown
+
 # 🛰️ SatGuard AI
 
 **Real‑Time Satellite Telemetry Anomaly Detection Pipeline with Deep Learning, Multi‑Subsystem Feature Fusion, and LLM‑Generated Fault Diagnostic Reports**
@@ -188,7 +188,7 @@ You will see real‑time telemetry windows and anomaly alerts printed in the con
 
 bash
 docker compose down
-📚 Documentation & Resources
+## 📚 Documentation & Resources
 
 - [Project Report PDF](docs/SatGuard_AI_Project_Report.pdf)
 
@@ -209,6 +209,7 @@ Feature‑level explainability – SHAP or attention visualisation for sensor at
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file.
 
 👤 Contact
+
 Marshenil Mitra
 Bachelor of Engineering (Information Technology), BVCOEW, Pune
 Post Graduate Certificate Program (Big Data Analytics), CDAC, Chennai
