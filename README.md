@@ -3,12 +3,10 @@ markdown
 
 **Real‑Time Satellite Telemetry Anomaly Detection Pipeline with Deep Learning, Multi‑Subsystem Feature Fusion, and LLM‑Generated Fault Diagnostic Reports**
 
-[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org/)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-LSTM--Autoencoder-orange)](https://www.tensorflow.org/)
-[![Docker](https://img.shields.io/badge/Docker-Containerised-green)](https://www.docker.com/)
-[![Kafka](https://img.shields.io/badge/Kafka-Streaming-red)](https://kafka.apache.org/)
-[![GitHub](https://img.shields.io/badge/Status-Completed-brightgreen)](https://github.com/marshenilmitra/SatGuard-AI)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Docker](https://img.shields.io/badge/Docker-Containerised-green)
+![Kafka](https://img.shields.io/badge/Kafka-Streaming-red)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
 ---
 
@@ -33,133 +31,97 @@ markdown
 
 ## 🧭 Overview
 
-SatGuard AI ingests raw multi‑subsystem satellite telemetry, fuses 9 sensor channels, and flags abnormal behaviour in real time. When an anomaly fires, the system retrieves relevant fault‑recovery guidelines from a local knowledge base and uses a locally hosted LLM to explain the fault and recommend actions. The entire pipeline is packaged into an interactive Streamlit dashboard, containerised with Docker, and extended with a Kafka streaming proof‑of‑concept.
-
----
+SatGuard AI monitors spacecraft health using real ESA OPS‑SAT CubeSat telemetry (300K+ records, 9 sensor channels). It detects anomalies with an LSTM‑Autoencoder and generates plain‑English diagnostic reports using a local RAG pipeline + Llama 3, all offline on a laptop.
 
 ## ✨ Key Features
 
-- **Real data, messy data** – 300K+ records from ESA’s OPS‑SAT CubeSat, 9 sensor channels.
-- **Multi‑subsystem feature fusion** – raw channels + rolling statistics (45 features for baseline models).
-- **Deep learning anomaly detection** – LSTM‑Autoencoder trained on 60‑timestep windows; threshold at 95th percentile of reconstruction error.
-- **Explainable diagnostics** – RAG pipeline (ChromaDB + Llama 3) produces structured reports with probable cause, actions, and confidence.
-- **Fully offline LLM** – no internet, no API costs, secure.
-- **Interactive dashboard** – Streamlit with anomaly inspection and live‑stream replay tabs.
-- **Containerised deployment** – Dockerfile for reproducible builds.
-- **Streaming awareness** – Apache Kafka producer/consumer POC for scalable ingestion.
-
----
+- Real, messy satellite telemetry
+- Multi‑subsystem feature fusion (45 features)
+- Deep learning anomaly detection (LSTM‑Autoencoder)
+- Explainable diagnostics (RAG + ChromaDB + Llama 3)
+- Fully offline LLM
+- Interactive Streamlit dashboard
+- Docker containerization
+- Kafka streaming proof‑of‑concept
 
 ## 🧠 System Architecture
 
-![SatGuard AI Architecture](images/architecture.png)
-
-The pipeline consists of four layers:
-
-1. **Data Ingestion & Preprocessing** – CSV telemetry → pivot → fill → scale → windowing.
-2. **Anomaly Detection** – LSTM‑Autoencoder computes reconstruction error; above‑threshold windows are anomalies.
-3. **Explainability & Diagnostics** – RAG retrieves fault guidelines and LLM writes a report.
-4. **Presentation & Deployment** – Streamlit dashboard, Docker container, Kafka POC.
+![Architecture](images/architecture.png)
 
 Detailed RAG flow:
 
 ![RAG Pipeline](images/rag_pipeline.png)
 
----
-
 ## 🎬 Demo
 
-### Quick Dashboard Demo (auto‑playing GIF)
-![SatGuard AI Dashboard Demo](demo/demo.gif)
+### Quick GIF
+![Dashboard Demo](demo/demo.gif)
 
 ### Full Walkthrough (YouTube)
-▶️ [Watch the full walkthrough](https://youtu.be/mchuxfH_WaY)
-
----
+[Watch the full walkthrough](https://youtu.be/mchuxfH_WaY)
 
 ## 📊 Evaluation
 
-**Anomaly detector baseline (validation set):**
-
 | Metric | Value |
 |--------|-------|
-| Precision | **1.000** |
-| Recall | **0.024** |
-| F1‑score | **0.046** |
+| Precision | 1.000 |
+| Recall | 0.024 |
+| F1‑score | 0.046 |
 
-This is a **high‑precision, low‑recall baseline**—the system only fires when it is extremely confident, so there are **zero false alarms**. Recall improvement is planned via threshold tuning and refined window labelling.
-
-**RAG retrieval baseline:**  
-Automated keyword‑based check on 30 random anomalies gave **100% relevance** (sanity check, not full human evaluation).
-
----
+*High‑precision, low‑recall baseline. Zero false alarms. Recall improvement planned.*
 
 ## 🛠️ Tech Stack
 
-| Layer | Tools |
-|-------|-------|
-| Language | Python 3.11 |
-| Data Processing | Pandas, NumPy |
-| ML/DL | TensorFlow/Keras, Scikit‑learn |
-| RAG / Vector DB | LangChain, ChromaDB, sentence‑transformers |
-| LLM | Ollama + Llama 3 (8B, local) |
-| Dashboard | Streamlit |
-| Container | Docker |
-| Streaming POC | Apache Kafka, kafka‑python |
-| Version Control | Git, GitHub |
-
----
+- Python, Pandas, NumPy, TensorFlow/Keras, Scikit‑learn
+- Streamlit, ChromaDB, LangChain, Ollama, Llama 3
+- Docker, Apache Kafka, Git/GitHub
 
 ## 📁 Repository Structure
 
 ```text
 SatGuard-AI/
-├── app.py                         # Streamlit dashboard
-├── satguard_eda.ipynb             # EDA + baseline Isolation Forest
-├── lstm_autoencoder.ipynb         # LSTM-Autoencoder training + evaluation
-├── rag_llm_diagnostics.ipynb      # RAG pipeline + report generation
-├── streaming_simulation.ipynb     # Real-time file-replay simulation
-├── kafka_streaming_demo.py        # Kafka producer/consumer POC
-├── docker-compose.yml             # Kafka + Zookeeper
-├── Dockerfile                     # Dashboard container
-├── requirements.txt               # Python dependencies
-├── threshold.json                 # Locked anomaly threshold
-├── evaluation_metrics.json        # Precision/Recall/F1
-├── rag_evaluation_results.json    # RAG relevance baseline
-├── ts_cleaned.csv                 # Cleaned pivoted telemetry
-├── anomaly_flags.csv              # Validation anomalies
-├── lstm_autoencoder.keras         # Trained model
-├── chroma_db/                     # Persisted vector store
-├── knowledge_base/                # Fault recovery guidelines (4 txt files)
-├── images/                        # Architecture diagrams
-├── docs/                          # PPT + final report
-└── demo/                          # Demo GIF + short video
+├── app.py
+├── satguard_eda.ipynb
+├── lstm_autoencoder.ipynb
+├── rag_llm_diagnostics.ipynb
+├── streaming_simulation.ipynb
+├── kafka_streaming_demo.py
+├── docker-compose.yml
+├── Dockerfile
+├── requirements.txt
+├── threshold.json
+├── evaluation_metrics.json
+├── rag_evaluation_results.json
+├── ts_cleaned.csv
+├── anomaly_flags.csv
+├── lstm_autoencoder.keras
+├── chroma_db/
+├── knowledge_base/
+├── images/
+├── docs/
+└── demo/
 🚀 Setup & Installation
-1. Clone the repository
+Clone the repository:
+
 bash
 git clone https://github.com/marshenilmitra/SatGuard-AI.git
 cd SatGuard-AI
-2. Create Python 3.11 environment (recommended)
+Create Python 3.11 virtual environment and install dependencies:
+
 bash
 python -m venv venv
-source venv/bin/activate   # Linux/Mac
-venv\Scripts\activate      # Windows
+source venv/bin/activate    # Linux/Mac
+venv\Scripts\activate       # Windows
 pip install -r requirements.txt
-3. Install Ollama and pull Llama 3
-Download Ollama from ollama.com
-
-Pull the model:
+Install Ollama and pull Llama 3:
 
 bash
 ollama pull llama3:8b
-4. Run the Streamlit dashboard
+Run the dashboard:
+
 bash
 streamlit run app.py
-Open http://localhost:8501.
-
 🐳 Docker Deployment
-Build and run the container (mount data files for full functionality):
-
 bash
 docker build -t satguard .
 docker run -p 8501:8501 \
@@ -171,41 +133,34 @@ docker run -p 8501:8501 \
   -v ${PWD}/evaluation_metrics.json:/app/evaluation_metrics.json \
   satguard
 ⚡ Kafka Streaming Proof‑of‑Concept
-Start Kafka & Zookeeper:
-
 bash
-docker compose up -d
-Run the demo:
-
-bash
-python kafka_streaming_demo.py
-You will see real‑time telemetry windows and anomaly alerts printed in the console. Stop services:
-
-bash
-docker compose down
+docker compose up -d          # Start Kafka + Zookeeper
+python kafka_streaming_demo.py # Run producer/consumer
+docker compose down           # Stop Kafka
 📚 Documentation & Resources
-Project Report: SatGuard_AI_Project_Report.pdf
-
-Presentation: SatGuard_AI_Presentation.pdf
+Project Report PDF
+- [Project Report PDF](docs/SatGuard_AI_Project_Report.pdf)
+Presentation PDF
+- [Presentation PDF](docs/SatGuard_AI_Presentation.pdf)
 
 🔮 Limitations & Future Work
-Recall improvement – lower threshold / refine window labelling to catch more anomalies.
+Improve recall via threshold tuning and refined labelling
 
-True real‑time – integrate Kafka directly into the dashboard.
+Integrate Kafka directly into dashboard for true real‑time
 
-Expand knowledge base – include more fault types and subsystem guidelines.
+Expand knowledge base
 
-Advanced RAG evaluation – human relevance judgments, LLM‑as‑a‑judge.
+Add advanced RAG evaluation
 
-Feature‑level explainability – SHAP or attention visualisation for sensor attribution.
+Feature‑level explainability (SHAP)
 
 📝 License
-This project is licensed under the MIT License – see the LICENSE file for details.
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file.
 
 👤 Contact
 Marshenil Mitra
-Post Graduate Certificate Program (PGCP) in Big Data Analytics, CDAC
 Bachelor of Engineering (Information Technology), BVCOEW, Pune
+Post Graduate Certificate Program (Big Data Analytics), CDAC, Chennai
 
 https://img.shields.io/badge/GitHub-marshenilmitra-blue?logo=github
 https://img.shields.io/badge/LinkedIn-marshenilmitra-0A66C2?logo=linkedin&logoColor=white
