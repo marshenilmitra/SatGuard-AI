@@ -189,7 +189,7 @@ You will see real‑time telemetry windows and anomaly alerts printed in the con
 bash
 docker compose down
 📚 Documentation & Resources
-Project Report PDF
+
 - [Project Report PDF](docs/SatGuard_AI_Project_Report.pdf)
 
 - [Presentation PDF](docs/SatGuard_AI_Presentation.pdf)
