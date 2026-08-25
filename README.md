@@ -1,4 +1,3 @@
-
 # 🛰️ SatGuard AI
 
 **Real‑Time Satellite Telemetry Anomaly Detection Pipeline with Deep Learning, Multi‑Subsystem Feature Fusion, and LLM‑Generated Fault Diagnostic Reports**
@@ -14,20 +13,20 @@
 
 ## 📌 Table of Contents
 
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [System Architecture](#system-architecture)
-- [Demo](#demo)
-- [Evaluation](#evaluation)
-- [Tech Stack](#tech-stack)
-- [Repository Structure](#repository-structure)
-- [Setup & Installation](#setup--installation)
-- [Docker Deployment](#docker-deployment)
-- [Kafka Streaming Proof‑of‑Concept](#kafka-streaming-proof‑of‑concept)
-- [Documentation & Resources](#documentation--resources)
-- [Limitations & Future Work](#limitations--future-work)
-- [License](#license)
-- [Contact](#contact)
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [System Architecture](#-system-architecture)
+- [Demo](#-demo)
+- [Evaluation](#-evaluation)
+- [Tech Stack](#️-tech-stack)
+- [Repository Structure](#-repository-structure)
+- [Setup & Installation](#-setup--installation)
+- [Docker Deployment](#-docker-deployment)
+- [Kafka Streaming Proof‑of‑Concept](#-kafka-streaming-proof-of-concept)
+- [Documentation & Resources](#-documentation--resources)
+- [Limitations & Future Work](#-limitations--future-work)
+- [License](#-license)
+- [Contact](#-contact)
 
 ---
 
@@ -42,7 +41,7 @@ SatGuard AI ingests raw multi‑subsystem satellite telemetry, fuses 9 sensor ch
 - **Real data, messy data** – 300K+ records from ESA’s OPS‑SAT CubeSat, 9 sensor channels.
 - **Multi‑subsystem feature fusion** – raw channels + rolling statistics (45 features for baseline models).
 - **Deep learning anomaly detection** – LSTM‑Autoencoder trained on 60‑timestep windows; threshold at 95th percentile of reconstruction error.
-- **Explainable diagnostics** – RAG pipeline (ChromaDB + Llama 3) produces structured reports with probable cause, actions, and confidence.
+- **Explainable diagnostics** – RAG pipeline (ChromaDB + Llama 3) produces structured reports with probable cause, actions, and confidence.
 - **Fully offline LLM** – no internet, no API costs, secure.
 - **Interactive dashboard** – Streamlit with anomaly inspection and live‑stream replay tabs.
 - **Containerised deployment** – Dockerfile for reproducible builds.
@@ -102,7 +101,7 @@ Automated keyword‑based check on 30 random anomalies gave **100% relevance** (
 | Data Processing | Pandas, NumPy |
 | ML/DL | TensorFlow/Keras, Scikit‑learn |
 | RAG / Vector DB | LangChain, ChromaDB, sentence‑transformers |
-| LLM | Ollama + Llama 3 (8B, local) |
+| LLM | Ollama + Llama 3 (8B, local) |
 | Dashboard | Streamlit |
 | Container | Docker |
 | Streaming POC | Apache Kafka, kafka‑python |
@@ -135,44 +134,47 @@ SatGuard-AI/
 ├── docs/                          # PPT + final report
 └── demo/                          # Demo GIF + short video
 ```
+
 ---
 
 ## 🚀 Setup & Installation
-1. Clone the repository
-bash
 
-git clone https://github.com/marshenilmitra/SatGuard-AI.git
-cd SatGuard-AI
-3. Create Python 3.11 virtual environment and install dependencies
-bash
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/marshenilmitra/SatGuard-AI.git
+   cd SatGuard-AI
+   ```
 
-python -m venv venv
-source venv/bin/activate    # Linux/Mac
-venv\Scripts\activate       # Windows
-pip install -r requirements.txt
+2. **Create Python 3.11 virtual environment and install dependencies**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate       # Linux/Mac
+   venv\Scripts\activate          # Windows
+   pip install -r requirements.txt
+   ```
 
-4. Install Ollama and pull Llama 3
-Download Ollama from ollama.com
+3. **Install Ollama and pull Llama 3**
+   - Download Ollama from [ollama.com](https://ollama.com/)
+   - Pull the model:
+     ```bash
+     ollama pull llama3:8b
+     ```
 
-Pull the model:
-
-bash
-ollama pull llama3:8b
-
-4. Run the Streamlit dashboard
-   
-bash
-streamlit run app.py
-
-Open http://localhost:8501.
+4. **Run the Streamlit dashboard**
+   ```bash
+   streamlit run app.py
+   ```
+   Open `http://localhost:8501` in your browser.
 
 ---
 
 ## 🐳 Docker Deployment
+
 Build and run the container (mount data files for full functionality):
 
-bash
+```bash
 docker build -t satguard .
+
 docker run -p 8501:8501 \
   -v ${PWD}/ts_cleaned.csv:/app/ts_cleaned.csv \
   -v ${PWD}/lstm_autoencoder.keras:/app/lstm_autoencoder.keras \
@@ -181,47 +183,58 @@ docker run -p 8501:8501 \
   -v ${PWD}/anomaly_flags.csv:/app/anomaly_flags.csv \
   -v ${PWD}/evaluation_metrics.json:/app/evaluation_metrics.json \
   satguard
-⚡ Kafka Streaming Proof‑of‑Concept
-Start Kafka & Zookeeper:
+```
 
-bash
-docker compose up -d
-Run the demo:
+---
 
-bash
-python kafka_streaming_demo.py
-You will see real‑time telemetry windows and anomaly alerts printed in the console. Stop services:
+## ⚡ Kafka Streaming Proof-of-Concept
 
-bash
-docker compose down
+1. **Start Kafka & Zookeeper:**
+   ```bash
+   docker compose up -d
+   ```
+
+2. **Run the demo:**
+   ```bash
+   python kafka_streaming_demo.py
+   ```
+   *You will see real‑time telemetry windows and anomaly alerts printed in the console.*
+
+3. **Stop services:**
+   ```bash
+   docker compose down
+   ```
+
+---
+
 ## 📚 Documentation & Resources
 
 - [Project Report PDF](docs/SatGuard_AI_Project_Report.pdf)
-
 - [Presentation PDF](docs/SatGuard_AI_Presentation.pdf)
 
-🔮 Limitations & Future Work
-Recall improvement – lower threshold / refine window labelling to catch more anomalies.
+---
 
-True real‑time – integrate Kafka directly into the dashboard.
+## 🔮 Limitations & Future Work
 
-Expand knowledge base – include more fault types and subsystem guidelines.
+- **Recall improvement** – Lower threshold / refine window labelling to catch more anomalies.
+- **True real‑time** – Integrate Kafka streaming consumers directly into the Streamlit dashboard.
+- **Expand knowledge base** – Include more fault types and subsystem operational guidelines.
+- **Advanced RAG evaluation** – Implement human relevance judgments and LLM‑as‑a‑judge benchmarks.
+- **Feature‑level explainability** – Add SHAP or attention visualisation for granular sensor attribution.
 
-Advanced RAG evaluation – human relevance judgments, LLM‑as‑a‑judge.
+---
 
-Feature‑level explainability – SHAP or attention visualisation for sensor attribution.
+## 📝 License
 
-📝 License
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file.
 
-👤 Contact
+---
 
-Marshenil Mitra
+## 👤 Contact
 
-Bachelor of Engineering (Information Technology), BVCOEW, Pune
-
-Post Graduate Certificate Program (Big Data Analytics), CDAC, Chennai
-
+**Marshenil Mitra**  
+Bachelor of Engineering (Information Technology), BVCOEW, Pune  
+Post Graduate Certificate Program (Big Data Analytics), CDAC, Chennai  
 
 [![GitHub](https://img.shields.io/badge/GitHub-marshenilmitra-blue?logo=github)](https://github.com/marshenilmitra)  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-marshenilmitra-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/marshenilmitra)
