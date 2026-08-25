@@ -155,9 +155,11 @@ Pull the model:
 
 bash
 ollama pull llama3:8b
+
 4. Run the Streamlit dashboard
 bash
 streamlit run app.py
+
 Open http://localhost:8501.
 
 ---
