@@ -8,6 +8,7 @@ markdown
 [![Docker](https://img.shields.io/badge/Docker-Containerised-green)](https://www.docker.com/)
 [![Kafka](https://img.shields.io/badge/Kafka-Streaming-red)](https://kafka.apache.org/)
 [![GitHub](https://img.shields.io/badge/Status-Completed-brightgreen)](https://github.com/marshenilmitra/SatGuard-AI)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ---
 
@@ -110,36 +111,32 @@ Automated keyword‑based check on 30 random anomalies gave **100% relevance** (
 ---
 
 ## 📁 Repository Structure
+
+```text
 SatGuard-AI/
-├── app.py # Streamlit dashboard
-├── satguard_eda.ipynb # EDA + baseline Isolation Forest
-├── lstm_autoencoder.ipynb # LSTM‑Autoencoder training + evaluation
-├── rag_llm_diagnostics.ipynb # RAG pipeline + report generation
-├── streaming_simulation.ipynb # Real‑time file‑replay simulation
-├── kafka_streaming_demo.py # Kafka producer/consumer POC
-├── docker-compose.yml # Kafka + Zookeeper
-├── Dockerfile # Dashboard container
-├── requirements.txt # Python dependencies
-├── threshold.json # Locked anomaly threshold
-├── evaluation_metrics.json # Precision/Recall/F1
-├── rag_evaluation_results.json # RAG relevance baseline
-├── ts_cleaned.csv # Cleaned pivoted telemetry
-├── anomaly_flags.csv # Validation anomalies
-├── lstm_autoencoder.keras # Trained model
-├── chroma_db/ # Persisted vector store
-├── knowledge_base/ # Fault recovery guidelines (4 txt files)
-├── images/ # Architecture diagrams
-├── docs/ # PPT + final report
-└── demo/ # Demo GIF + short video
-
-text
-
----
-
-## 🚀 Setup & Installation
-
-### 1. Clone the repository
-```bash
+├── app.py                         # Streamlit dashboard
+├── satguard_eda.ipynb             # EDA + baseline Isolation Forest
+├── lstm_autoencoder.ipynb         # LSTM-Autoencoder training + evaluation
+├── rag_llm_diagnostics.ipynb      # RAG pipeline + report generation
+├── streaming_simulation.ipynb     # Real-time file-replay simulation
+├── kafka_streaming_demo.py        # Kafka producer/consumer POC
+├── docker-compose.yml             # Kafka + Zookeeper
+├── Dockerfile                     # Dashboard container
+├── requirements.txt               # Python dependencies
+├── threshold.json                 # Locked anomaly threshold
+├── evaluation_metrics.json        # Precision/Recall/F1
+├── rag_evaluation_results.json    # RAG relevance baseline
+├── ts_cleaned.csv                 # Cleaned pivoted telemetry
+├── anomaly_flags.csv              # Validation anomalies
+├── lstm_autoencoder.keras         # Trained model
+├── chroma_db/                     # Persisted vector store
+├── knowledge_base/                # Fault recovery guidelines (4 txt files)
+├── images/                        # Architecture diagrams
+├── docs/                          # PPT + final report
+└── demo/                          # Demo GIF + short video
+🚀 Setup & Installation
+1. Clone the repository
+bash
 git clone https://github.com/marshenilmitra/SatGuard-AI.git
 cd SatGuard-AI
 2. Create Python 3.11 environment (recommended)
@@ -187,9 +184,9 @@ You will see real‑time telemetry windows and anomaly alerts printed in the con
 bash
 docker compose down
 📚 Documentation & Resources
-Project Report: docs/SatGuard_AI_Project_Report.pdf
+Project Report: SatGuard_AI_Project_Report.pdf
 
-Presentation: docs/SatGuard_AI_Presentation.pdf
+Presentation: SatGuard_AI_Presentation.pdf
 
 🔮 Limitations & Future Work
 Recall improvement – lower threshold / refine window labelling to catch more anomalies.
@@ -203,9 +200,12 @@ Advanced RAG evaluation – human relevance judgments, LLM‑as‑a‑judge.
 Feature‑level explainability – SHAP or attention visualisation for sensor attribution.
 
 📝 License
-This project is open‑source under the MIT License. See LICENSE file for details.
+This project is licensed under the MIT License – see the LICENSE file for details.
 
 👤 Contact
 Marshenil Mitra
-PGCP Big Data Analytics, CDAC
-GitHub | LinkedIn
+Post Graduate Certificate Program (PGCP) in Big Data Analytics, CDAC
+Bachelor of Engineering (Information Technology), BVCOEW, Pune
+
+https://img.shields.io/badge/GitHub-marshenilmitra-blue?logo=github
+https://img.shields.io/badge/LinkedIn-marshenilmitra-0A66C2?logo=linkedin&logoColor=white
