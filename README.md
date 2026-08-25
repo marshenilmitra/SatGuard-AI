@@ -134,7 +134,9 @@ SatGuard-AI/
 ├── images/                        # Architecture diagrams
 ├── docs/                          # PPT + final report
 └── demo/                          # Demo GIF + short video
+
 ---
+
 ## 🚀 Setup & Installation
 1. Clone the repository
 bash
@@ -158,7 +160,9 @@ bash
 streamlit run app.py
 Open http://localhost:8501.
 
-🐳 Docker Deployment
+---
+
+## 🐳 Docker Deployment
 Build and run the container (mount data files for full functionality):
 
 bash
