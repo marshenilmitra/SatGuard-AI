@@ -213,5 +213,5 @@ Marshenil Mitra
 Bachelor of Engineering (Information Technology), BVCOEW, Pune
 Post Graduate Certificate Program (Big Data Analytics), CDAC, Chennai
 
-https://img.shields.io/badge/GitHub-marshenilmitra-blue?logo=github
-https://img.shields.io/badge/LinkedIn-marshenilmitra-0A66C2?logo=linkedin&logoColor=white
+[![GitHub](https://img.shields.io/badge/GitHub-marshenilmitra-blue?logo=github)](https://github.com/marshenilmitra)  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-marshenilmitra-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/marshenilmitra)
