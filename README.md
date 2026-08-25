@@ -191,7 +191,7 @@ docker compose down
 📚 Documentation & Resources
 Project Report PDF
 - [Project Report PDF](docs/SatGuard_AI_Project_Report.pdf)
-Presentation PDF
+
 - [Presentation PDF](docs/SatGuard_AI_Presentation.pdf)
 
 🔮 Limitations & Future Work
